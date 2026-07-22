@@ -34,18 +34,19 @@ const copy = {
   },
 };
 
-export default function ContactPageContent() {
+export default function ContactPageContent({ embedded = false }: { embedded?: boolean }) {
   const { lang } = useLang();
   const c = copy[lang];
+  const Heading = embedded ? "h2" : "h1";
 
   return (
-    <section className="background-wine relative min-h-[calc(100svh-108px)] overflow-hidden py-20 text-cream sm:py-28 lg:py-32">
+    <section id="contact" className={`background-wine relative overflow-hidden py-20 text-cream sm:py-28 ${embedded ? "lg:py-28" : "min-h-[calc(100svh-108px)] lg:py-32"}`}>
       <span className="absolute -right-10 -top-24 font-display text-[24rem] leading-none text-cream/[.025]" aria-hidden="true">@</span>
       <div className="relative mx-auto grid max-w-7xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
         <Reveal direction="right">
           <div className="max-w-lg lg:sticky lg:top-32">
             <p className="section-kicker text-orange">{c.eyebrow}</p>
-            <h1 className="editorial-heading font-display mt-7 text-[clamp(3.4rem,6.5vw,6.8rem)] font-semibold">{c.title}</h1>
+            <Heading className={`editorial-heading font-display mt-7 font-semibold ${embedded ? "text-[clamp(3rem,5vw,5.3rem)]" : "text-[clamp(3.4rem,6.5vw,6.8rem)]"}`}>{c.title}</Heading>
             <p className="mt-7 text-lg leading-relaxed text-cream/62">{c.intro}</p>
             <div className="mt-10 border-t border-cream/12 pt-6">
               <p className="eyebrow text-cream/35">{c.direct}</p>
