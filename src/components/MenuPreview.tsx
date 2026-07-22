@@ -6,7 +6,6 @@ import { menu } from "@/lib/data/menu";
 import { restaurant } from "@/lib/data/restaurant";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import { useT } from "@/lib/i18n/dict";
-import { TalaveraPattern } from "./MexicanPattern";
 import MenuItemRow from "./MenuItemRow";
 import Reveal from "./Reveal";
 
@@ -18,7 +17,6 @@ export default function MenuPreview() {
 
   return (
     <section id="menu" className="background-ivory relative overflow-hidden py-20 sm:py-28">
-      <TalaveraPattern opacity={0.05} />
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
         <Reveal>
           <div className="mb-12 text-center">
@@ -30,11 +28,11 @@ export default function MenuPreview() {
           </div>
         </Reveal>
 
-        <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
+        <div className="grid gap-x-16 gap-y-10 border-y border-terracotta/15 py-9 md:grid-cols-2">
           {preview.map((cat) => (
             <Reveal key={cat.id}>
               <div>
-                <h3 className="font-display mb-2 flex items-center gap-3 text-2xl font-semibold text-terracotta">
+                <h3 className="font-display mb-3 flex items-center gap-3 text-3xl font-semibold text-terracotta">
                   {lang === "en" ? cat.title : cat.titleEn}
                   <span className="h-px flex-1 bg-terracotta/30" />
                 </h3>

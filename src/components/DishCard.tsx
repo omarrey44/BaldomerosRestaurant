@@ -22,7 +22,7 @@ export default function DishCard({
   return (
     <Link
       href="/menu"
-      className="group relative flex flex-col overflow-hidden rounded-2xl rounded-tr-[2.5rem] border border-terracotta/20 bg-cream shadow-[0_18px_40px_-28px_rgba(80,45,46,0.7)] transition-all duration-500 hover:-translate-y-1.5 hover:rotate-[-1deg] hover:shadow-[0_28px_55px_-30px_rgba(168,67,50,0.8)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange"
+      className="group relative flex flex-col overflow-hidden border border-terracotta/20 bg-cream shadow-[0_18px_40px_-28px_rgba(80,45,46,0.7)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_55px_-30px_rgba(168,67,50,0.8)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

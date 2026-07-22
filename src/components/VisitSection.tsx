@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { restaurant, DAY_ORDER } from "@/lib/data/restaurant";
 import { useT } from "@/lib/i18n/dict";
-import { TilePattern } from "./MexicanPattern";
 import OpenStatus from "./OpenStatus";
 import Reveal from "./Reveal";
 
@@ -21,12 +21,12 @@ export default function VisitSection({
   as?: "h1" | "h2";
 }) {
   const t = useT();
+  const fullPage = Heading === "h1";
   return (
     <section
       id="visit"
       className="background-clay grain relative overflow-hidden py-20 text-cream sm:py-28"
     >
-      <TilePattern color="var(--color-cream)" opacity={0.07} />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <div className="mb-12 max-w-2xl">
@@ -38,10 +38,10 @@ export default function VisitSection({
           </div>
         </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+        <div className="grid gap-0 overflow-hidden border border-cream/18 shadow-[0_35px_90px_-45px_rgba(0,0,0,.65)] lg:grid-cols-[.88fr_1.12fr]">
           <Reveal direction="right">
-            <div className="rounded-3xl bg-cream p-7 text-ink shadow-2xl sm:p-9">
-              <OpenStatus className="mb-6 rounded-full bg-blush px-4 py-2 text-sm" />
+            <div className="h-full bg-cream p-7 text-ink sm:p-9 lg:p-10">
+              <OpenStatus className="mb-7 border-l-2 border-cilantro bg-cilantro/8 px-4 py-2 text-sm" />
 
               <div className="space-y-6">
                 <div className="flex gap-4">
@@ -117,14 +117,21 @@ export default function VisitSection({
           </Reveal>
 
           <Reveal direction="left">
-            <div className="h-full min-h-[340px] overflow-hidden rounded-3xl border-4 border-cream/20 shadow-2xl">
-              <iframe
+            <div className="relative h-full min-h-[400px] bg-charcoal">
+              {fullPage ? <iframe
                 title={`${t.visit.mapTitle} ${restaurant.name}`}
                 src={restaurant.mapsEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full min-h-[340px] w-full"
-              />
+                className="h-full min-h-[400px] w-full"
+              /> : <>
+                <Image src="/images/location/fachada.webp" alt={`Fachada de ${restaurant.name}`} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/5 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-6 text-cream sm:p-8">
+                  <div><p className="eyebrow text-orange">Los Angeles, CA</p><p className="font-display mt-2 text-2xl">3104 Maple Ave</p></div>
+                  <a href={restaurant.mapsUrl} target="_blank" rel="noopener noreferrer" className="grid h-12 w-12 shrink-0 place-items-center bg-orange text-charcoal transition-transform hover:-translate-y-1" aria-label={t.visit.openInMaps}><MapPin className="h-5 w-5" /></a>
+                </div>
+              </>}
             </div>
           </Reveal>
         </div>

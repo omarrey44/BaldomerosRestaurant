@@ -11,13 +11,13 @@ export default function MenuItemRow({ item }: { item: MenuItem }) {
     lang === "en" ? item.description : item.descriptionEs ?? item.description;
 
   return (
-    <li className="py-4">
+    <li className="border-b border-terracotta/12 py-5 sm:py-6">
       <div className="flex items-baseline gap-3">
-        <h4 className="font-display text-lg font-semibold text-ink">
+        <h4 className="font-display text-xl font-semibold text-ink sm:text-[1.35rem]">
           {item.name}
         </h4>
         {item.weekendOnly && (
-          <span className="eyebrow shrink-0 rounded-full bg-cilantro/15 px-2 py-0.5 text-[0.55rem] text-cilantro">
+          <span className="eyebrow shrink-0 border border-cilantro/25 px-2 py-0.5 text-[0.52rem] text-cilantro">
             {t.status.weekend}
           </span>
         )}
@@ -46,7 +46,7 @@ export default function MenuItemRow({ item }: { item: MenuItem }) {
           {item.variations.map((v) => (
             <li
               key={v}
-              className="rounded-full border border-terracotta/25 bg-blush px-2.5 py-0.5 text-xs font-medium text-terracotta"
+              className="border-l border-terracotta/35 px-2.5 py-0.5 text-xs font-semibold text-terracotta"
             >
               {v}
             </li>
