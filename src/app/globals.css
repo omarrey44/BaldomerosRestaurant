@@ -245,6 +245,13 @@ body {
 }
 .link-editorial:hover { color: var(--color-orange); gap: .7rem; }
 .focus-ring:focus-visible { outline: 2px solid var(--color-orange); outline-offset: 4px; }
+.contact-field { display: grid; gap: .55rem; }
+.contact-field > span { font-size: .62rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: color-mix(in srgb, var(--color-cream) 55%, transparent); }
+.contact-field input,
+.contact-field textarea { width: 100%; border: 0; border-bottom: 1px solid rgba(255,248,237,.22); border-radius: 0; background: rgba(9,9,9,.16); padding: .85rem .15rem; color: var(--color-cream); outline: none; transition: border-color .25s, background-color .25s; }
+.contact-field textarea { resize: vertical; min-height: 9rem; }
+.contact-field input:focus,
+.contact-field textarea:focus { border-color: var(--color-orange); background: rgba(9,9,9,.28); }
 .btn:focus-visible {
   outline: 3px solid var(--color-orange-bright);
   outline-offset: 3px;

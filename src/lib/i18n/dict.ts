@@ -286,6 +286,7 @@ export const navLabels: Record<string, { en: string; es: string }> = {
   gallery: { en: "Gallery", es: "Galería" },
   reviews: { en: "Reviews", es: "Opiniones" },
   visit: { en: "Visit", es: "Visítanos" },
+  contact: { en: "Contact", es: "Contacto" },
 };
 
 export function useT(): Dict {

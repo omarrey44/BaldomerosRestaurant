@@ -12,4 +12,5 @@ export const navLinks: NavLink[] = [
   { key: "gallery", href: "/gallery" },
   { key: "reviews", href: "/#reviews" },
   { key: "visit", href: "/visit" },
+  { key: "contact", href: "/contact" },
 ];
