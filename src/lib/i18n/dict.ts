@@ -1,0 +1,294 @@
+"use client";
+
+import { useLang } from "./LanguageProvider";
+
+// ============================================================
+// UI strings. English default, Spanish secondary.
+// Dish names stay in Spanish (authentic) across both languages.
+// ============================================================
+export const dict = {
+  en: {
+    topbar: {
+      banner: "Authentic Tlaquepaque-style birria · Since 1970 · Los Angeles",
+      bannerShort: "Tlaquepaque Style · Los Angeles",
+    },
+    header: { directions: "Get directions" },
+    hero: {
+      eyebrow: "Since 1970 · Tlaquepaque Style",
+      title1: "Goat birria.",
+      title2: "Tlaquepaque style.",
+      desc: "Authentic goat birria prepared with Jalisco tradition in the heart of Los Angeles.",
+      ctaMenu: "View menu",
+      ctaDirections: "Get directions",
+      trust: [
+        "Goat birria",
+        "Weekend menudo",
+        "Traditional recipe",
+        "Los Angeles, California",
+      ],
+      sealSince: "Since",
+      sealTradition: "Tradition",
+    },
+    featured: {
+      eyebrow: "House favorites",
+      title: "Made with the flavor that has fed generations",
+      desc: "Dishes prepared with the traditional Jalisco recipe, served like home.",
+    },
+    signature: {
+      eyebrow: "The dish that started it all",
+      title: "The pot is our signature.",
+      desc: "Goat birria cooked slowly in a deeply seasoned dried-chile broth, until the meat is tender and every spoonful tastes like Jalisco.",
+      photoCaption: "Goat birria, house style",
+      from: "From",
+      facts: [
+        { label: "Meat", value: "Goat" },
+        { label: "Style", value: "Tlaquepaque" },
+        { label: "Cooking", value: "Slow" },
+      ],
+      menu: "Explore the menu",
+      order: "Call to order",
+      weekend: "Menudo is served Saturday and Sunday.",
+    },
+    dishCard: { viewInMenu: "View on menu" },
+    story: {
+      eyebrow: "Our story",
+      title: "From Tlaquepaque to Los Angeles",
+      p1: "Birria is more than a dish: it is a Jalisco heritage. At Birriería Baldomeros #2 we still prepare goat birria the Tlaquepaque way — slow-cooked in its dried-chile broth until the meat falls apart.",
+      p2: "That same tradition crossed the border and found a home in the heart of Los Angeles, where generations of guests keep coming back for the authentic flavor, the weekend menudo and the service of always.",
+      archive: "Baldomeros Archive",
+      specialtyLabel: "Specialty",
+      specialtyValue: "Goat birria",
+      styleLabel: "Style",
+      styleValue: "Tlaquepaque",
+      homeLabel: "Home",
+      homeValue: "Los Angeles",
+    },
+    menu: {
+      eyebrow: "The menu",
+      title: "From the comal to your table",
+      note: "Prices already include tax and are subject to change.",
+      viewFull: "View full menu",
+      callToOrder: "Call to order",
+      directions: "Get directions",
+      craving: "Craving birria? Come visit us or call in your order.",
+      visitUs: "Visit us",
+      pageEyebrow: "Our menu",
+    },
+    reviews: {
+      eyebrow: "Reviews",
+      title: "What our guests say",
+      desc: "Stories from those who come back for the flavor, the tradition and the service.",
+      prev: "Previous review",
+      next: "Next review",
+    },
+    gallery: {
+      eyebrow: "Gallery",
+      title: "Served the way it should be",
+      viewFull: "View full gallery",
+      pageDesc:
+        "A look at our dishes, the restaurant and the tradition we serve every day.",
+      all: "All",
+      cats: {
+        Birria: "Birria",
+        "Tacos y Burritos": "Tacos & Burritos",
+        Especialidades: "Specialties",
+        "El Restaurante": "The Restaurant",
+        Historia: "History",
+        Comunidad: "Community",
+      } as Record<string, string>,
+      archive: "Baldomeros Archive",
+    },
+    visit: {
+      eyebrow: "Visit us",
+      title: "We'll keep the pot warm for you",
+      desc: "Check out our menu and come enjoy authentic Jalisco-style birria in the heart of Los Angeles.",
+      address: "Address",
+      phone: "Phone",
+      hours: "Hours",
+      closed: "Closed",
+      menudoNote: "Menudo available Saturday and Sunday.",
+      openInMaps: "Open in Google Maps",
+      callNow: "Call now",
+      mapTitle: "Map of",
+    },
+    footer: {
+      blurb:
+        "Authentic goat birria, menudo and Mexican specialties prepared with Jalisco tradition in Los Angeles.",
+      navHeading: "Navigation",
+      findHeading: "Find us",
+      hoursLine: "Mon–Fri 8 AM–4 PM · Sat–Sun 6 AM–4 PM",
+      closedLine: "Closed Wednesdays",
+      rights: "All rights reserved.",
+      privacy: "Privacy notice",
+      style: "Tlaquepaque Style · Since 1970",
+    },
+    mobileBar: { call: "Call", menu: "Menu", directions: "Directions" },
+    status: {
+      openNow: "Open now",
+      closedNow: "Closed now",
+      checking: "Checking hours…",
+      weekend: "Sat & Sun",
+    },
+    lang: { switchTo: "Español", label: "Language" },
+    days: {
+      mon: "Monday",
+      tue: "Tuesday",
+      wed: "Wednesday",
+      thu: "Thursday",
+      fri: "Friday",
+      sat: "Saturday",
+      sun: "Sunday",
+    } as Record<string, string>,
+  },
+
+  es: {
+    topbar: {
+      banner: "Auténtica birria estilo Tlaquepaque · Desde 1970 · Los Ángeles",
+      bannerShort: "Estilo Tlaquepaque · Los Ángeles",
+    },
+    header: { directions: "Cómo llegar" },
+    hero: {
+      eyebrow: "Desde 1970 · Estilo Tlaquepaque",
+      title1: "Birria de chivo.",
+      title2: "Estilo Tlaquepaque.",
+      desc: "Auténtica birria de chivo preparada con tradición jalisciense en el corazón de Los Ángeles.",
+      ctaMenu: "Ver menú",
+      ctaDirections: "Cómo llegar",
+      trust: [
+        "Birria de chivo",
+        "Menudo de fin de semana",
+        "Receta tradicional",
+        "Los Ángeles, California",
+      ],
+      sealSince: "Desde",
+      sealTradition: "Tradición",
+    },
+    featured: {
+      eyebrow: "Los favoritos de la casa",
+      title: "Preparados con el sabor que ha acompañado a generaciones",
+      desc: "Platillos hechos con la receta tradicional jalisciense, servidos como en casa.",
+    },
+    signature: {
+      eyebrow: "El platillo que inició todo",
+      title: "La olla es nuestra firma.",
+      desc: "Birria de chivo cocida lentamente en un caldo profundo de chiles secos, hasta que la carne queda suave y cada cucharada sabe a Jalisco.",
+      photoCaption: "Birria de chivo de la casa",
+      from: "Desde",
+      facts: [
+        { label: "Carne", value: "Chivo" },
+        { label: "Estilo", value: "Tlaquepaque" },
+        { label: "Cocción", value: "Lenta" },
+      ],
+      menu: "Explorar el menú",
+      order: "Llamar para ordenar",
+      weekend: "Menudo disponible sábado y domingo.",
+    },
+    dishCard: { viewInMenu: "Ver en el menú" },
+    story: {
+      eyebrow: "Nuestra historia",
+      title: "De Tlaquepaque a Los Ángeles",
+      p1: "La birria es más que un platillo: es una herencia jalisciense. En Birriería Baldomeros #2 seguimos preparando la birria de chivo como se hace en Tlaquepaque —cocida lento, en su caldo de chiles secos, hasta que la carne se deshace.",
+      p2: "Esa misma tradición cruzó la frontera y encontró casa en el corazón de Los Ángeles, donde generaciones de comensales regresan por el sabor auténtico, el menudo de fin de semana y el trato de siempre.",
+      archive: "Archivo Baldomeros",
+      specialtyLabel: "Especialidad",
+      specialtyValue: "Birria de chivo",
+      styleLabel: "Estilo",
+      styleValue: "Tlaquepaque",
+      homeLabel: "Hogar",
+      homeValue: "Los Ángeles",
+    },
+    menu: {
+      eyebrow: "El menú",
+      title: "Del comal a tu mesa",
+      note: "Los precios ya incluyen impuestos y están sujetos a cambio.",
+      viewFull: "Ver menú completo",
+      callToOrder: "Llamar para ordenar",
+      directions: "Cómo llegar",
+      craving: "¿Antojo de birria? Ven a visitarnos o llámanos para tu pedido.",
+      visitUs: "Visítanos",
+      pageEyebrow: "Nuestro menú",
+    },
+    reviews: {
+      eyebrow: "Opiniones",
+      title: "Lo que dicen nuestros clientes",
+      desc: "Historias de quienes regresan por el sabor, la tradición y el buen servicio.",
+      prev: "Opinión anterior",
+      next: "Siguiente opinión",
+    },
+    gallery: {
+      eyebrow: "Galería",
+      title: "Servido como debe ser",
+      viewFull: "Ver galería completa",
+      pageDesc:
+        "Un vistazo a nuestros platillos, el restaurante y la tradición que servimos todos los días.",
+      all: "Todo",
+      cats: {
+        Birria: "Birria",
+        "Tacos y Burritos": "Tacos y Burritos",
+        Especialidades: "Especialidades",
+        "El Restaurante": "El Restaurante",
+        Historia: "Historia",
+        Comunidad: "Comunidad",
+      } as Record<string, string>,
+      archive: "Archivo Baldomeros",
+    },
+    visit: {
+      eyebrow: "Visítanos",
+      title: "Te esperamos con la olla caliente",
+      desc: "Consulta nuestro menú y ven a disfrutar una auténtica birria estilo Jalisco en el corazón de Los Ángeles.",
+      address: "Dirección",
+      phone: "Teléfono",
+      hours: "Horario",
+      closed: "Cerrado",
+      menudoNote: "Menudo disponible sábado y domingo.",
+      openInMaps: "Abrir en Google Maps",
+      callNow: "Llamar ahora",
+      mapTitle: "Mapa de",
+    },
+    footer: {
+      blurb:
+        "Auténtica birria de chivo, menudo y especialidades mexicanas preparadas con tradición jalisciense en Los Ángeles.",
+      navHeading: "Navegación",
+      findHeading: "Encuéntranos",
+      hoursLine: "Lun–Vie 8 AM–4 PM · Sáb–Dom 6 AM–4 PM",
+      closedLine: "Miércoles cerrado",
+      rights: "Todos los derechos reservados.",
+      privacy: "Aviso de privacidad",
+      style: "Estilo Tlaquepaque · Desde 1970",
+    },
+    mobileBar: { call: "Llamar", menu: "Menú", directions: "Llegar" },
+    status: {
+      openNow: "Abierto ahora",
+      closedNow: "Cerrado ahora",
+      checking: "Consultando horario…",
+      weekend: "Sáb y Dom",
+    },
+    lang: { switchTo: "English", label: "Idioma" },
+    days: {
+      mon: "Lunes",
+      tue: "Martes",
+      wed: "Miércoles",
+      thu: "Jueves",
+      fri: "Viernes",
+      sat: "Sábado",
+      sun: "Domingo",
+    } as Record<string, string>,
+  },
+};
+
+export type Dict = (typeof dict)["en"];
+
+/** Localized nav labels by nav key. */
+export const navLabels: Record<string, { en: string; es: string }> = {
+  home: { en: "Home", es: "Inicio" },
+  menu: { en: "Menu", es: "Menú" },
+  story: { en: "Our Story", es: "Nuestra historia" },
+  gallery: { en: "Gallery", es: "Galería" },
+  reviews: { en: "Reviews", es: "Opiniones" },
+  visit: { en: "Visit", es: "Visítanos" },
+};
+
+export function useT(): Dict {
+  const { lang } = useLang();
+  return dict[lang];
+}
